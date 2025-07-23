@@ -1,0 +1,5 @@
+venv/
+.env
+experimental_files/
+*.csv
+*.json
