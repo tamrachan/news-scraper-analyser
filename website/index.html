@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Set the tab title of the page. -->
+        <title>News catalogue</title> 
+
+        <!-- Link Javascript files. -->
+        <script src="./script.js" defer></script>
+        
+        <!-- Link CSS file. -->
+        <link rel = "stylesheet" href="./style.css">
+    </head>
+    <body>
+        <!-- Create title for the page. -->
+        <header class="header">
+            <h1>NEWS CATALOGUE</h1>
+        </header>
+
+        <!-- Create block to allow user to add new media to the list. -->
+        <div class="addMedia">
+            <button id="addToday" class="addNews" onclick="getTodayNews();">Get Today's News</button>
+        </div>
+
+        <!-- Group the ordering and filtering buttons together. -->
+        <div class="ordering">
+            <!-- Create buttons for sorting -->
+            <div class="sort">
+                <h5>Sort by:</h5>
+                <div class="sort-group">
+                    <span>Date:</span>
+                    <button onclick="sortDate('desc')">▲ Latest</button>
+                    <button onclick="sortDate('asc')">▼ Oldest</button>
+                </div>
+                <div class="sort-group">
+                    <span>Title:</span>
+                    <button onclick="sortTitle('asc')">▲ Asc</button>
+                    <button onclick="sortTitle('desc')">▼ Desc</button>
+                </div>
+                <button onclick="removeSorting()">Remove Sorting</button>
+            </div>
+            <!-- Create buttons for filtering -->
+            <div class="filter" id="filter-container">
+                <h5>Filter:</h5>
+                <!-- Remove prompt-based filter-source -->
+                <button id="remove-filter" class="filter" onclick="removeFilter();">Remove all filters</button>
+            </div>
+
+            <!-- 🔽 Dynamic source filter buttons go here -->
+            <div id="source-button-container" class="filter-buttons"></div>
+        </div>
+        
+        <!-- Create the search bar. -->
+        <div class="search-wrapper">
+            <label for="search-bar">Search bar:</label>
+            <input type="text" id="search-title-bar" data-search placeholder="Insert news title here...">
+            <input type="text" id="search-source-bar" data-search placeholder="Insert news source here...">
+            <input type="text" id="search-date-bar" data-search placeholder="Insert news date here...">
+            <input type="text" id="search-summary-bar" data-search placeholder="Insert news summary here...">
+            <input type="text" id="search-category-bar" data-search placeholder="Insert news category here...">
+            <input type="text" id="search-product-bar" data-search placeholder="Insert news product here...">
+            <input type="text" id="search-tech-bar" data-search placeholder="Insert news technology here...">
+            <input type="text" id="search-tags-bar" data-search placeholder="Insert news tags here...">
+            <input type="text" id="search-company-bar" data-search placeholder="Insert news companies here...">
+            <input type="text" id="search-pcompany-bar" data-search placeholder="Insert news parent companies here...">
+            <input type="text" id="search-countries-bar" data-search placeholder="Insert news countries here...">
+        </div>
+
+        <!-- Group the media objects together. -->
+        <div id="media-container" class="media-container">
+            <h3 class="media-title"></h3>
+            <h4 class="media-source"></h4>
+            <div class="media-date"></div>
+            <div class="media-summary"></div>
+            <div class="media-category"></div>
+            <div class="media-product"></div>
+            <div class="media-technology"></div>
+            <div class="media-tags"></div>
+            <div class="media-companies"></div>
+            <div class="media-parent-companies"></div>
+            <div class="media-countries"></div>
+            <a href="all_articles_output.json" class="media-url" ></a>
+        </div>
+    
+    </body>
+</html>

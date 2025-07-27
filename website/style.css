@@ -1,0 +1,155 @@
+/* Applies styling to all elements. */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    letter-spacing: .5px;
+}
+
+/* Styles the body of the HTML. */
+body{
+    background-color: whitesmoke;
+    color: darkslategray;
+}
+
+/* Styles the header. */
+header{
+    padding: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Styles the form. */
+.addMedia{
+    margin: 20px;
+    text-align: center;
+    background-color: lightgray;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* Styles the form buttons. */
+.addNews{
+    background-color: powderblue;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+/* Styles the container of the media objects. */
+.media-container{
+    width: 90%;
+    margin: 2rem auto;
+    display: grid;
+    /* Divide into four equal columns */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Styles each media object card. */
+.media-container .media{
+    padding: 1.5rem;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 1px solid gray;
+    border-radius: 5px;
+    max-width: 100%;           /* Limit card width */
+    width: 100%;                /* Allow it to shrink on small screens */
+    margin: 0.5rem auto;          /* Center horizontally and add vertical spacing */
+    box-sizing: border-box;     /* Prevent overflow from padding */
+    
+}
+
+/* Changes the background colour of the media object when the cursor hovers over it. */
+.media:hover{
+    background: rgb(184, 184, 184);
+}
+
+/* Styles the media title. */
+.media-title{
+    color: black;
+    margin-bottom: .5rem;
+    text-align: center;
+    font-size: large;
+}
+
+/* Styles the media source. */
+.media-container .media-source{
+    color: darkblue;
+    display: flex;
+    font-size: medium;
+}
+
+.media-container .media-date{
+    color: black;
+    font-size: small;
+}
+/* Styles the description of the media object. */
+.media-container .media-summary{
+    color: black;
+    margin-top: 10px;
+    font-size: small;
+}
+
+/* Style the tags */
+.media-container .media-category, .media-product, .media-technology, .media-tags, .media-companies, .media-parent-companies, .media-countries {
+    color: gray;
+    margin-top: 10px;
+    font-size: x-small;
+}
+
+.media-url {
+    margin-top: 10px;
+    font-size: x-small;
+}
+
+/* Styles the ordering div block. */
+.ordering {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    width: 90%;
+    margin: 0 auto;  /* center the ordering container */
+}
+.ordering button{
+    color: navy;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+/* Sets the sort buttons to the left. */
+.sort {
+    float: left;
+    padding-left: 0.5vw;
+}
+/* Sets the filter buttons to the right. */
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 200px;  /* optional: limit width */
+}
+
+
+/* Styles the search wrapper. */
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding: 20px 40px; /* align with ordering padding */
+    width: 90%;
+    margin: 0 auto;
+}
