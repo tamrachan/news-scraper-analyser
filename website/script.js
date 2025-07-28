@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
             media = data.filter(article => article.title && article.summary_data);
             displayedMedia = [...media];
             renderMedia(displayedMedia);
-            createSourceButtons(media); // 👈 Create dynamic source buttons
+            createSourceButtons(media); // Create dynamic source buttons
 
             // Attach live filtering for input fields
             document.querySelectorAll('[data-search]').forEach(input => {
@@ -50,13 +50,13 @@ function renderMedia(mediaArray) {
             <h4 class="media-source">${article.source}</h4>
             <div class="media-date">${article.date}</div>
             <div class="media-summary">${sd.summary}</div>
-            <div class="media-category">${sd.category}</div>
-            <div class="media-product">${sd.product}</div>
-            <div class="media-technology">${sd.technology}</div>
-            <div class="media-tags">${sd.tags}</div>
-            <div class="media-companies">${sd.companies_mentioned}</div>
-            <div class="media-parent-companies">${sd.parent_companies || 'N/A'}</div>
-            <div class="media-countries">${sd.geography}</div>
+            <div class="media-category"><strong>Categories :</strong>${sd.category || 'N/A'}</div>
+            <div class="media-product"><strong>Products: </strong>${sd.product || 'N/A'}</div>
+            <div class="media-technology"><strong>Technologies: </strong>${sd.technology || 'N/A'}</div>
+            <div class="media-tags"><strong>Tags: </strong>${sd.tags || 'N/A'}</div>
+            <div class="media-companies"><strong>Companies: </strong>${sd.companies_mentioned || 'N/A'}</div>
+            <div class="media-parent-companies"><strong>Parent companies: </strong>${sd.parent_companies_mentioned || 'N/A'}</div>
+            <div class="media-countries"><strong>Countries: </strong>${sd.geography}</div>
             <a href="${article.url}" class="media-url" target="_blank">Read Article</a>
         `;
         container.appendChild(mediaDiv);

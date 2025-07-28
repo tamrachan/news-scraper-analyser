@@ -116,7 +116,7 @@ header{
 .ordering {
     display: flex;
     justify-content: space-between;
-    padding: 40px;
+    padding: 20px;
     width: 90%;
     margin: 0 auto;  /* center the ordering container */
 }
@@ -148,8 +148,8 @@ header{
 .search-wrapper {
     display: flex;
     flex-direction: column;
-    gap: .25rem;
+    gap: .2rem;
     padding: 20px 40px; /* align with ordering padding */
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
 }
