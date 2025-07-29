@@ -7,6 +7,8 @@ There are two parts:
 2. Analysing the data (`add_summaries.py`)
 To collect and analyse the data, use `main.py`.
 
+In Part 1, the websites are attempted to be web-scraped by newspaper3k (Python library). However, if no data is found, BeautifulSoup then attempts to web scrape as a back up. In the config file, i.e. `collect_example.ini`, newspaper3k only uses the 'homepage' and 'article_link_selector' entries - the other entries are for BeautifulSoup.
+
 ## How to run
 Below are instructions on how to use run the news scraper analyser.
 
