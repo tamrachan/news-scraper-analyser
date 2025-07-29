@@ -25,7 +25,7 @@ def run_collect_data():
         scraper = WebScraper(COLLECT_CONFIG_PATH)
         all_articles = scraper.scrape_all_sites(scraped_data_file, UPDATE_TODAY_ONLY)
 
-        print(f"✓ Results saved to: {scraped_data_file}")
+        print(f"Results saved to: {scraped_data_file}")
     except ValueError as ve:
         print(f"Config Error: {ve}")
         sys.exit(1)
@@ -33,15 +33,17 @@ def run_collect_data():
         print(f"An error occurred: {e}\nData collection failed. Exiting.")
         sys.exit(1)
 
-    # Ask the user if they want to save the web scraped .json as a .csv
-    save_to_csv = ""
-    while save_to_csv.lower() not in ['y', 'n']:
-        save_to_csv = input("Would you to save the initial web scrapped .json as a .csv? (y/n): ")
+    convert_json_to_csv(all_articles, scraped_data_file + ".csv", False) # Always re-write file
 
-    if save_to_csv.lower() == 'y':
-        # Save as a .csv
-        print("--- Saving Data Collection to csv format ---")
-        convert_json_to_csv(all_articles, scraped_data_file + ".csv", False) # Always re-write file
+    # # Ask the user if they want to save the web scraped .json as a .csv
+    # save_to_csv = ""
+    # while save_to_csv.lower() not in ['y', 'n']:
+    #     save_to_csv = input("Would you to save the initial web scrapped .json as a .csv? (y/n): ")
+
+    # if save_to_csv.lower() == 'y':
+    #     # Save as a .csv
+    #     print("--- Saving Data Collection to csv format ---")
+    #     convert_json_to_csv(all_articles, scraped_data_file + ".csv", False) # Always re-write file
 
 
     print("\n--- Data Collection Complete ---")
@@ -53,7 +55,7 @@ def run_analysis(scraped_data_file):
         # Pass the scraped file directly to the analysis class
         analyser = AnalyseData(input_json=scraped_data_file, config_path=ANALYSE_CONFIG_PATH)
         analysed_json = analyser.run()
-        print("\n--- ✓ Analysis Complete ---")
+        print("\n--- Analysis Complete ---")
     except Exception as e:
         print(f"An error occurred during analysis: {e}")
         sys.exit(1)
@@ -65,7 +67,7 @@ def run_analysis(scraped_data_file):
         csv_output_name = analysed_json[:-5] + ".csv"
         convert_json_to_csv(analysed_data, csv_output_name, UPDATE_TODAY_ONLY)
 
-        print(f"✓ All results saved to {csv_output_name}")
+        print(f"All results saved to {csv_output_name}")
     except Exception as e:
         print(f"An error occurred during converting json to csv format: {e}")
         sys.exit(1)
@@ -79,18 +81,19 @@ def main():
     # Run news article web scraping
     web_scraped_json = run_collect_data()
 
-    # Ask the user if they want to analyse the results
-    analyse = ""
-    while analyse.lower() not in ['y', 'n']:
-        analyse = input("Would you like AWS Bedrock (AI) to analyse the results? (y/n): ")
+    # # Ask the user if they want to analyse the results
+    # analyse = ""
+    # while analyse.lower() not in ['y', 'n']:
+    #     analyse = input("Would you like AWS Bedrock (AI) to analyse the results? (y/n): ")
 
-    if analyse.lower() == 'n':
-        print("Exiting.")
-        sys.exit(0)
+    # if analyse.lower() == 'n':
+    #     print("Exiting.")
+    #     sys.exit(0)
 
     # Run analysis of web scrapped file
     run_analysis(web_scraped_json)
     
+
 
 if __name__ == "__main__":
     main()
