@@ -8,20 +8,22 @@ import json
 from scripts.collect_data import WebScraper
 from scripts.add_summaries import AnalyseData
 from scripts.convert_json_to_csv import convert_json_to_csv
-from datetime import datetime
+import os
 
 COLLECT_CONFIG_PATH = "examples/collect_example.ini" # TODO: Change to collect.ini
-ANALYSE_CONFIG_PATH = "examples/summary_example.ini" #TODO: Change to analyse.ini
+ANALYSE_CONFIG_PATH = "examples/summary_example.ini" # TODO: Change to analyse.ini
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Path to main.py
+FILE_NAME = os.path.join(BASE_DIR, "data", "all_articles")
+UPDATE_TODAY_ONLY = True
 
 def run_collect_data():
     print("--- Starting Data Collection ---")
-    # Generate output filename with timestamp
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    scraped_data_file = f'scraped_articles_{timestamp}'
+    # Get output file name
+    scraped_data_file = FILE_NAME
 
     try:
         scraper = WebScraper(COLLECT_CONFIG_PATH)
-        all_articles = scraper.scrape_all_sites(scraped_data_file)
+        all_articles = scraper.scrape_all_sites(scraped_data_file, UPDATE_TODAY_ONLY)
 
         print(f"✓ Results saved to: {scraped_data_file}")
     except ValueError as ve:
@@ -39,12 +41,11 @@ def run_collect_data():
     if save_to_csv.lower() == 'y':
         # Save as a .csv
         print("--- Saving Data Collection to csv format ---")
-        convert_json_to_csv(all_articles, scraped_data_file + ".csv")
+        convert_json_to_csv(all_articles, scraped_data_file + ".csv", False) # Always re-write file
 
-    scraped_data_json = scraped_data_file + ".json"
 
     print("\n--- Data Collection Complete ---")
-    return scraped_data_json
+    return scraped_data_file
 
 def run_analysis(scraped_data_file):
     print("\n--- Starting Analysis ---")
@@ -62,7 +63,7 @@ def run_analysis(scraped_data_file):
         with open(analysed_json, "r", encoding="utf-8") as f:
             analysed_data = json.load(f)  # e.g. a list of JSON objects
         csv_output_name = analysed_json[:-5] + ".csv"
-        convert_json_to_csv(analysed_data, csv_output_name)
+        convert_json_to_csv(analysed_data, csv_output_name, UPDATE_TODAY_ONLY)
 
         print(f"✓ All results saved to {csv_output_name}")
     except Exception as e:

@@ -50,7 +50,7 @@ function renderMedia(mediaArray) {
             <h4 class="media-source">${article.source}</h4>
             <div class="media-date">${article.date}</div>
             <div class="media-summary">${sd.summary}</div>
-            <div class="media-category"><strong>Categories :</strong>${sd.category || 'N/A'}</div>
+            <div class="media-category"><strong>Categories: </strong>${sd.category || 'N/A'}</div>
             <div class="media-product"><strong>Products: </strong>${sd.product || 'N/A'}</div>
             <div class="media-technology"><strong>Technologies: </strong>${sd.technology || 'N/A'}</div>
             <div class="media-tags"><strong>Tags: </strong>${sd.tags || 'N/A'}</div>

@@ -66,7 +66,7 @@ header{
     width: 100%;                /* Allow it to shrink on small screens */
     margin: 0.5rem auto;          /* Center horizontally and add vertical spacing */
     box-sizing: border-box;     /* Prevent overflow from padding */
-    
+    overflow: hidden;
 }
 
 /* Changes the background colour of the media object when the cursor hovers over it. */
@@ -105,6 +105,13 @@ header{
     color: gray;
     margin-top: 10px;
     font-size: x-small;
+}
+
+.media-companies {
+  word-break: break-word;      /* Allow breaking within words */
+  overflow-wrap: anywhere;     /* Modern browsers: break at any point */
+  white-space: normal;
+  width: 100%;
 }
 
 .media-url {

@@ -1,2 +1,5 @@
 venv/
 .env
+test_newspaper3k.py
+data/test.json
+__pycache__
