@@ -186,7 +186,7 @@ class AnalyseData:
         # Append data
         try:
             with open(self.input_json + "_output.json", "r", encoding="utf-8") as file:
-                list_to_save = list_to_save.extend(json.load(file))
+                list_to_save.extend(json.load(file))
         except FileNotFoundError:
             print("File not found. Writing to file instead of appending.")
 

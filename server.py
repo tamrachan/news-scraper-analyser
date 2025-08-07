@@ -10,7 +10,7 @@ def run_main():
     try:
         # Run your main.py script and capture output
         print("Running script")
-        result = subprocess.run([sys.executable, 'main.py'], capture_output=True, text=True)
+        result = subprocess.run([sys.executable, 'server_main.py'], capture_output=True, text=True)
         output = result.stdout
         error = result.stderr
 
